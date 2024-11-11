@@ -1,0 +1,16 @@
+* {
+    font-size: 17px !important;
+}
+
+input,
+div {
+    width: 100% !important;
+}
+
+form {
+    max-width: 600px !important;
+}
+
+#edit {
+    display: none;
+}
