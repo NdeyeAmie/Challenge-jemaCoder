@@ -8,13 +8,16 @@ const submitButton = document.getElementById("submit");
 const editButton = document.getElementById("edit");
 
 // Liste des utilisateurs
-let utilisateurs = [];
+let utilisateurs = JSON.parse(localStorage.getItem("utilisateur") || "[]"); // convertion des taches en string vers le type initial(tableau)
 
 let indexEnCoursDeModification = null;
 
+// Afficher les utilisateurs chargés depuis le localStorage
+afficherEtudiants();
+
 function ajouterEtudiant(prenom, nom, email, telephone) {
   if (indexEnCoursDeModification === null) {
-    // Ajoute un nouvel utilisateur
+    
     utilisateurs.push({ prenom, nom, email, telephone });
   } else {
     // Modifie l'utilisateur existant
@@ -24,7 +27,7 @@ function ajouterEtudiant(prenom, nom, email, telephone) {
     submitButton.style.display = "block"; // Affiche le bouton "Ajouter"
   }
 
-//Enregistre dans le localStorage
+// recuperation des elements depuis localStorage sous forme de string
   localStorage.setItem("utilisateur", JSON.stringify(utilisateurs));
 
   afficherEtudiants();
@@ -80,17 +83,12 @@ function modifierEtudiant(index) {
 function supprimerEtudiant(index) {
   if (confirm("Voulez-vous vraiment supprimer cet utilisateur ?")) {
     utilisateurs.splice(index, 1); // Supprime l'utilisateur à l'index
+
+    // Met à jour le localStorage après suppression
+    localStorage.setItem("utilisateur", JSON.stringify(utilisateurs));
     afficherEtudiants();
   }
 }
 
 
- // recuperation des elements depuis localStorage sous forme de string
-let saveEtudiantToLocalStorage = localStorage.getItem("utilisateur");
-if (!saveEtudiantToLocalStorage) {
-  saveEtudiantToLocalStorage = "[]";
-}
-
-// convertion des taches en string vers le type initial(tableau)
- utilisateurs = JSON.parse(saveEtudiantToLocalStorage);
 
