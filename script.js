@@ -26,7 +26,7 @@ function ajouterEtudiant(prenom, nom, email, telephone) {
 
 //Enregistre dans le localStorage
   localStorage.setItem("utilisateur", JSON.stringify(utilisateurs));
-  
+
   afficherEtudiants();
   form.reset();
 }
@@ -85,12 +85,12 @@ function supprimerEtudiant(index) {
 }
 
 
-
+ // recuperation des elements depuis localStorage sous forme de string
 let saveEtudiantToLocalStorage = localStorage.getItem("utilisateur");
 if (!saveEtudiantToLocalStorage) {
   saveEtudiantToLocalStorage = "[]";
 }
 
-// Parse la chaîne JSON en un tableau d'objets
+// convertion des taches en string vers le type initial(tableau)
  utilisateurs = JSON.parse(saveEtudiantToLocalStorage);
 
