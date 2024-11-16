@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE htm
+
 <dtml lang="en">
 
 <head>
@@ -22,21 +23,25 @@
             <div class="mb-3 d-sm-flex">
                 <div>
                     <label for="prenom" class="form-label">Prenom</label>
-                    <input required type="text" class="form-control" id="prenom" aria-describedby="name">
+                    <input  type="text" class="form-control" id="prenom" aria-describedby="name">
+                    <span id="prenomError" class="error-message"></span>
                 </div>
                 <div class="ms-sm-3">
                     <label for="nom" class="form-label">Nom</label>
-                    <input required type="text" class="form-control" id="nom" aria-describedby="name">
+                    <input  type="text" class="form-control" id="nom" aria-describedby="name">
+                    <span id="nomError" class="error-message"></span>
                 </div>
             </div>
             <div class="mb-3 d-sm-flex">
                 <div>
                     <label for="email" class="form-label">Email</label>
-                    <input required type="email" class="form-control" id="email">
+                    <input  type="" class="form-control" id="email">
+                    <span id="emailError" class="error-message"></span>
                 </div>
                 <div class="ms-sm-3">
                     <label for="telephone" class="form-label">Telephone</label>
-                    <input required type="tel" class="form-control" id="telephone">
+                    <input  type="tel" class="form-control" id="telephone">
+                    <div id="telephoneError" style="color: red; display: none; font-size: 10px;"></div>
                 </div>
                 <input id="hidden" value="" type="text" hidden>
             </div>

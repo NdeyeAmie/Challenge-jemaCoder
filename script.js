@@ -58,6 +58,51 @@ form.addEventListener("submit", (e) => {
   const nom = nomInput.value.trim();
   const email = emailInput.value.trim();
   const telephone = telephoneInput.value.trim();
+  
+  const prenomError = document.getElementById("prenomError");
+  const nomError = document.getElementById("nomError");
+  const emailError = document.getElementById("emailError");
+  const telephoneError = document.getElementById("telephoneError");
+
+  prenomError.style.display = "none";
+  nomError.style.display = "none";
+  emailError.style.display = "none";
+  telephoneError.style.display = "none";
+  telephoneError.textContent = "";
+
+  let isValid = true;
+
+  // Vérification du prénom (non vide)
+  if (!prenom) {
+    prenomError.textContent = "Le prénom est requis.";
+    prenomError.style.display = "block";
+    isValid = false;
+    return;
+  }
+
+  if (!nom) {
+    nomError.textContent = "Le nom est requis.";
+    nomError.style.display = "block";
+    isValid = false;
+    return;
+  }
+
+
+  // Vérification de l'email (format basique)
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    emailError.textContent = "L'email doit être valide.";
+    emailError.style.display = "block";
+    isValid = false;
+    return;
+  }
+
+  const telephoneRegex = /^\d{9}$/;
+  if (!telephoneRegex.test(telephone)) {
+    telephoneError.textContent = "Le numéro de téléphone doit contenir exactement 9 chiffres.";
+    telephoneError.style.display = "block", "";
+    return;
+  }
 
   if (prenom && nom && email && telephone) {
     ajouterEtudiant(prenom, nom, email, telephone);
